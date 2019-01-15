@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container " [class.alternative]="otherTheme">
+  <!--<div [class.alternative]="otherTheme" >-->
+  <mat-sidenav #drawer style="width: 200px;"  fixedInViewport="true"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="!(isHandset$ | async)">
+    <mat-toolbar>Side bar</mat-toolbar>
+    <mat-nav-list>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Practice1</span>
+      <section class="example-section kk">
+        <button (click)="changeTheme()" mat-raised-button color="primary">Change theme</button>
+      </section>
+    </mat-toolbar>
+    <ng-content></ng-content>
+
+  </mat-sidenav-content>
+  <!--</div>-->
+</mat-sidenav-container>
